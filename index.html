@@ -178,10 +178,10 @@ function noClick() {
   noBtn.style.fontSize = Math.max(10, 18 - noCount * 2) + "px";
   noBtn.style.padding = Math.max(8, 15 - noCount) + "px";
 }
-
 function yesClick() {
   startMusic();
-launchConfetti();
+  launchConfetti(); // 🎉
+
   document.getElementById("cartoon").src = "cartoon-happy.png";
   document.getElementById("message").textContent =
     "I knew it 😍 You can never say no to me! I love you my jaan 💖 Happy Valentine’s Day 💕";
@@ -193,6 +193,7 @@ launchConfetti();
  
 </body>
 </html>
+
 
 
 
