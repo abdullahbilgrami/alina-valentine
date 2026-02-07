@@ -84,6 +84,22 @@
     from {opacity: 0;}
     to {opacity: 1;}
   }
+.confetti {
+  position: fixed;
+  top: -10px;
+  width: 10px;
+  height: 10px;
+  opacity: 0.9;
+  animation: fall linear forwards;
+  z-index: 9999;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(110vh) rotate(720deg);
+    opacity: 0;
+  }
+}
 
 </style>
 </head>
@@ -112,7 +128,27 @@
 <audio id="bgMusic" loop playsinline preload="auto">
   <source src="music.mp3" type="audio/mpeg">
 </audio>
-<script>
+
+  function launchConfetti() {
+  const colors = ["#ff4d6d", "#ffb703", "#8ecae6", "#ffafcc", "#cdb4db"];
+
+  for (let i = 0; i < 80; i++) {
+    const confetti = document.createElement("div");
+    confetti.className = "confetti";
+    confetti.style.left = Math.random() * 100 + "vw";
+    confetti.style.backgroundColor =
+      colors[Math.floor(Math.random() * colors.length)];
+    confetti.style.animationDuration = 2 + Math.random() * 2 + "s";
+    confetti.style.width = confetti.style.height =
+      6 + Math.random() * 8 + "px";
+
+    document.body.appendChild(confetti);
+
+    setTimeout(() => confetti.remove(), 4000);
+  }
+}
+
+  <script>
 let noCount = 0;
 let musicStarted = false;
 
@@ -164,7 +200,7 @@ function noClick() {
 
 function yesClick() {
   startMusic();
-
+launchConfetti();
   document.getElementById("cartoon").src = "cartoon-happy.png";
   document.getElementById("message").textContent =
     "I knew it 😍 You can never say no to me! I love you my jaan 💖 Happy Valentine’s Day 💕";
@@ -176,6 +212,7 @@ function yesClick() {
  
 </body>
 </html>
+
 
 
 
