@@ -115,7 +115,6 @@
 <audio id="bgMusic" loop playsinline preload="auto">
   <source src="music.mp3" type="audio/mpeg">
 </audio>
-
 <script>
 let noCount = 0;
 
@@ -127,27 +126,6 @@ const sadMessages = [
   "Please my jaan ❤️"
 ];
 
-let musicStarted = false;
-
-function startMusic() {
-  if (musicStarted) return;
-  musicStarted = true;
-
-  const music = document.getElementById("bgMusic");
-  music.volume = 0;
-  music.play();
-
-  let vol = 0;
-  const fade = setInterval(() => {
-    if (vol < 0.7) {
-      vol += 0.03;
-      music.volume = vol;
-    } else {
-      clearInterval(fade);
-    }
-  }, 150);
-}
-
 function noClick() {
   startMusic();
   noCount++;
@@ -158,46 +136,7 @@ function noClick() {
   const noBtn = document.getElementById("noBtn");
 
   cartoon.src = "cartoon-sad.png";
-  message.innerText = sadMessages[noCount % sadMessages.length];
-
-  yesBtn.style.transform = `scale(${1 + noCount * 0.2})`;
-  noBtn.style.transform = `scale(${1 - noCount * 0.1})`;
-}
-
-function yesClick() {
-  startMusic();
-
-  const cartoon = document.getElementById("cartoon");
-  const message = document.getElementById("message");
-
-  cartoon.src = "cartoon-happy.png";
-  message.innerText = "I knew you can’t say no 😘 You love me ❤️";
-
-  document.getElementById("buttons").style.display = "none";
-  document.getElementById("photo").style.display = "block";
-}
-</script>
-
-
-  let noCount = 0;
-
-const sadMessages = [
-  "Please baby 🥺",
-  "Please wifey 😢",
-  "Don’t break my heart 💔",
-  "I can’t live without you 😭",
-  "Please my jaan ❤️"
-];
-
-function noClick() {
-  noCount++;
-
-  document.getElementById("cartoon").src = "cartoon-sad.png";
-  document.getElementById("message").textContent =
-    sadMessages[noCount % sadMessages.length];
-
-  let yesBtn = document.getElementById("yesBtn");
-  let noBtn = document.getElementById("noBtn");
+  message.textContent = sadMessages[noCount % sadMessages.length];
 
   yesBtn.style.fontSize = (18 + noCount * 4) + "px";
   yesBtn.style.padding = (15 + noCount * 2) + "px";
@@ -207,18 +146,20 @@ function noClick() {
 }
 
 function yesClick() {
+  startMusic();
+
   document.getElementById("cartoon").src = "cartoon-happy.png";
   document.getElementById("message").textContent =
-    "I knew it 😍 You can never say no to me! I love you my jaan ❤️ Happy Valentine’s Day 💕";
+    "I knew it 😍 You can never say no to me! I love you my jaan 💖 Happy Valentine's Day 💕";
 
   document.getElementById("buttons").style.display = "none";
   document.getElementById("photo").style.display = "block";
 }
 </script>
-
-
+ 
 </body>
 </html>
+
 
 
 
