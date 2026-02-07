@@ -160,6 +160,24 @@ function startMusic() {
   }, 150);
 }
 
+function launchConfetti() {
+  const colors = ["#ff4d6d", "#ffb703", "#8ecae6", "#ffafcc", "#cdb4db"];
+
+  for (let i = 0; i < 80; i++) {
+    const confetti = document.createElement("div");
+    confetti.className = "confetti";
+    confetti.style.left = Math.random() * 100 + "vw";
+    confetti.style.backgroundColor =
+      colors[Math.floor(Math.random() * colors.length)];
+    confetti.style.animationDuration = 2 + Math.random() * 2 + "s";
+    confetti.style.width = confetti.style.height =
+      6 + Math.random() * 8 + "px";
+
+    document.body.appendChild(confetti);
+    setTimeout(() => confetti.remove(), 4000);
+  }
+}
+
 function noClick() {
   startMusic();
   noCount++;
@@ -178,9 +196,10 @@ function noClick() {
   noBtn.style.fontSize = Math.max(10, 18 - noCount * 2) + "px";
   noBtn.style.padding = Math.max(8, 15 - noCount) + "px";
 }
+
 function yesClick() {
   startMusic();
-  launchConfetti(); // 🎉
+  launchConfetti();
 
   document.getElementById("cartoon").src = "cartoon-happy.png";
   document.getElementById("message").textContent =
@@ -189,10 +208,11 @@ function yesClick() {
   document.getElementById("buttons").style.display = "none";
   document.getElementById("photo").style.display = "block";
 }
-</script>
- 
+</script> 
+
 </body>
 </html>
+
 
 
 
